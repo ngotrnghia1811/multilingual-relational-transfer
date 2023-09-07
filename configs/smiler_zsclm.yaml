@@ -1,0 +1,70 @@
+transfer_mode: zsclm
+log_dir: logs/smiler_zsclm/
+output_dir: checkpoints/smiler_zsclm/
+
+model:
+  bert_model_name: xlm-roberta-base
+  bert_cache_dir: null
+  bert_dropout: 0.1
+  hidden_dim: 256
+  multi_piece_strategy: first
+
+train:
+  bert_learning_rate: 1.0e-5
+  learning_rate: 1.0e-3
+  bert_weight_decay: 1.0e-5
+  weight_decay: 1.0e-3
+  batch_size: 16
+  eval_batch_size: 16
+  max_epoch: 50
+  warmup_epoch: 5
+  grad_clipping: 5.0
+  accumulate_step: 1
+  seed: 42
+
+data:
+  data_dir: data/smiler/
+  task: relation_extraction
+  # SMiLER clusters (d_comb k-medoids, k=4):
+  #   ita*: fra, ita, pol, por, rus, spa  (medoid: ita)
+  #   nld*: deu, eng, nld              (medoid: nld)
+  #   fas*: ara, fas, hin, kor         (medoid: fas)
+  #   jpn*: jpn                        (medoid: jpn — single member)
+  # Inter-cluster (medoids*): 3 source languages — ita + nld + fas
+  source_languages:
+    - ita
+    - nld
+    - fas
+  target_languages:
+    - ara
+    - deu
+    - eng
+    - fas
+    - fra
+    - hin
+    - ita
+    - jpn
+    - kor
+    - nld
+    - pol
+    - por
+    - rus
+    - spa
+  all_languages:
+    - ara
+    - deu
+    - eng
+    - fas
+    - fra
+    - hin
+    - ita
+    - jpn
+    - kor
+    - nld
+    - pol
+    - por
+    - rus
+    - spa
+  max_length: 128
+  use_gpu: true
+  gpu_device: 0
