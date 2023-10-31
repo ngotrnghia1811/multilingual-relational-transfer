@@ -1,10 +1,10 @@
-# multilingual-relational-transfer
+# Multilingual Relational Transfer
 
 This repository contains the code for:
 
 **Zero-shot Cross-lingual Transfer Learning with Multiple Source and Target Languages for Information Extraction: Language Selection and Adversarial Training** \
 *Nghia Trung Ngo, Duy Phung, Thien Huu Nguyen* \
-Findings of ACL 2023 &nbsp;|&nbsp; [Paper](https://aclanthology.org/2023.findings-acl.533)
+Findings of ACL 2023 &nbsp;|&nbsp; [Paper](https://arxiv.org/abs/2411.08785)
 
 ## Method
 
@@ -22,7 +22,7 @@ The key findings:
 ## Installation
 
 ```bash
-git clone https://github.com/nghia-ngo/multilingual-relational-transfer.git
+git clone https://github.com/ngotrnghia1811/multilingual-relational-transfer.git
 cd multilingual-relational-transfer
 pip install -r requirements.txt
 pip install -e .
@@ -133,37 +133,6 @@ Red edges connect medoids across clusters in the language-relational graph (Figu
 
 DANN uniformly aligns all language representations, which hurts at scale (−12.1 F1 for SMiLER SMALL). GrDA flexibly aligns according to the language graph, achieving consistent improvements.
 
-## Project Structure
-
-```
-multilingual-relational-transfer/
-├── train.py                  # Main entry point
-├── zsrl/
-│   ├── config.py             # ZSRLConfig, ModelConfig, TrainConfig, DataConfig, GrDAConfig
-│   ├── distance.py           # URIEL linguistic distances (Hamming/Jaccard/Inner/Anderberg)
-│   ├── cluster.py            # K-medoids clustering and language graph construction
-│   ├── data.py               # IEDataset for MINION and SMiLER
-│   ├── model.py              # XLM-R-based IE model (event detection + RE heads)
-│   ├── gda.py                # GrDA: LanguageGraphEmbedding, Discriminator, AdaptiveEncoder
-│   ├── train.py              # train_zscls(), train_zsclm(), train_zsclr()
-│   └── evaluate.py           # Trigger F1 and relation micro-F1
-├── configs/
-│   ├── minion_zscls.yaml     # ZSCL-S for MINION
-│   ├── minion_zsclm.yaml     # ZSCL-M for MINION (medoids* config)
-│   ├── minion_zsclr.yaml     # ZSCL-R for MINION
-│   ├── smiler_zscls.yaml     # ZSCL-S for SMiLER
-│   ├── smiler_zsclm.yaml     # ZSCL-M for SMiLER (medoids* config)
-│   └── smiler_zsclr.yaml     # ZSCL-R for SMiLER
-├── scripts/
-│   ├── preprocess_minion.py
-│   ├── preprocess_smiler.py
-│   ├── train_zscls.sh
-│   ├── train_zsclm.sh
-│   └── train_zsclr.sh
-└── data/
-    └── README.md             # Data download and format instructions
-```
-
 ## Citation
 
 ```bibtex
@@ -173,7 +142,7 @@ multilingual-relational-transfer/
     author    = {Ngo, Nghia Trung and Phung, Duy and Nguyen, Thien Huu},
     booktitle = {Findings of the Association for Computational Linguistics: ACL 2023},
     year      = {2023},
-    url       = {https://aclanthology.org/2023.findings-acl.533},
+    url       = {https://arxiv.org/abs/2411.08785},
     pages     = {8421--8436},
 }
 ```
